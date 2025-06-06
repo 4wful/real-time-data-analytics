@@ -1,16 +1,19 @@
-# 📈 Proyecto: Análisis Financiero con Streaming y Power BI (Business Analytics)
+# 📊 Proyecto: Predicción Financiera para NVIDIA en Tiempo Real
 
-Este repositorio contiene un sistema de análisis de datos bursátiles con procesamiento de datos en tiempo real y visualización avanzada en **Power BI**. Está orientado al curso de Business Analytics, con foco en generar insights útiles para la toma de decisiones empresariales.
+Este repositorio contiene un sistema completo de análisis y predicción financiera enfocado en la empresa NVIDIA, utilizando técnicas de Machine Learning predictivo, específicamente regresión lineal y clasificación.
+
+El sistema procesa datos bursátiles en tiempo real mediante Apache Kafka y Apache Spark, realiza entrenamiento de modelos con Spark ML y Python, y presenta los resultados a través de dashboards en Power BI para facilitar la toma de decisiones estratégicas.
 
 ---
 
 ## 🛠️ Tecnologías utilizadas
 
-- **Apache Kafka**: streaming de datos financieros  
-- **Apache Spark**: procesamiento ETL en tiempo real  
-- **Python**: transformación, modelado y predicción  
-- **Power BI**: visualización de KPIs, métricas e insights  
-- **Docker**: orquestación de contenedores (Kafka)
+- **Apache Kafka**: Streaming de datos financieros en tiempo real.  
+- **Apache Spark**: Procesamiento ETL distribuido.
+- **Python**: Transformación de datos, construcción de modelos de machine learning y generación de predicciones.  
+- **Power BI**: Visualización de KPIs, métricas financieras e insights generados por los modelos predictivos. 
+- **Docker**: Orquestación de contenedores para desplegar servicios como Kafka y Zookeeper de forma modular.
+
 
 ## 📁 Estructura general del proyecto
 
@@ -80,7 +83,7 @@ Crear y verificar el tópico:
 docker exec -it kafka-broker-1 kafka-topics --create \
   --bootstrap-server kafka-broker-1:29092 \
   --replication-factor 3 --partitions 3 \
-  --topic mercados-bursatiles --if-not-exists
+  --topic nombre_de_tu_topic --if-not-exists
 
 # Verificar tópicos
 docker exec -it kafka-broker-1 kafka-topics --list \
@@ -116,18 +119,22 @@ Dirígete a la carpeta `output/dashboard_data/` y conecta Power BI al archivo CS
 
 📌 *Próximamente se añadirá una imagen de referencia del dashboard final.*
 
-**Ejemplo de KPIs sugeridos:**
+**Ejemplos de KPIs e Insights Generados:**
 
-- Predicción de precios de acciones  
-- Volumen negociado  
-- Comparativas por trimestre o región
+- Predicción del precio de las acciones de NVIDIA mediante regresión lineal.
+- Clasificación de escenarios de riesgo o tendencia de mercado.
+- Análisis del volumen negociado en distintos periodos.
+- Comparativas por trimestre usando reportes financieros (PDF) y datos históricos del mercado.
+- Visualización interactiva de métricas en Power BI para facilitar la toma de decisiones.
 
 ---
 
 ## 👨‍🏫 Autor
 
-**Grupo 4** – Trabajo final para el curso **Business Analytics** (Año 2025), dictado por el docente **Lira Camacho**.
+**Maidana Güido** 
+Apasionado por el análisis de datos, el aprendizaje automático y su aplicación en el mundo financiero.
+Este proyecto refleja el cierre de una etapa de formación en Business Analytics y el inicio de un camino profesional integrando streaming de datos, machine learning y visualización avanzada para resolver desafíos reales como los de NVIDIA.
 
 ¡Explora, ejecuta y aprende del flujo completo de datos en tiempo real! 📈
 
-> **Todos los derechos reservados al Grupo 4.**
+> **Todos los derechos reservados**
