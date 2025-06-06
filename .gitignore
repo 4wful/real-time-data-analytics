@@ -1,0 +1,23 @@
+# Entorno virtual
+venv/
+
+# Variables sensibles
+.env
+
+# Archivos temporales de Python
+*.pyc
+__pycache__/
+
+# Ignorar TODO en output
+output/**
+
+# permitir las carpetas vacías con .gitkeep
+!output/**/
+!output/**/.gitkeep
+
+# Archivos comprimidos
+*.zip
+
+# Archivos temporales del sistema
+.DS_Store
+Thumbs.db
