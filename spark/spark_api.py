@@ -7,9 +7,8 @@ ROOT_DIR = os.path.abspath(os.path.join(CURRENT_DIR, '..'))
 if ROOT_DIR not in sys.path:
     sys.path.append(ROOT_DIR)
 
-# === Cargar variables del .env manualmente desde la raíz ===
+# === Cargar .env ===
 env_path = os.path.join(ROOT_DIR, '.env')
-
 if os.path.exists(env_path):
     with open(env_path) as f:
         for line in f:
@@ -19,14 +18,13 @@ if os.path.exists(env_path):
 else:
     raise FileNotFoundError(f"No se encontró el archivo .env en: {env_path}")
 
+from config.path import ML_TRAINING_DATA_DIR, CHECKPOINT_ML_DIR
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import from_json, col, to_timestamp
+from pyspark.sql.types import StructType, StringType
+
 KAFKA_BOOTSTRAP_SERVERS = os.environ.get("KAFKA_BOOTSTRAP_SERVERS")
 KAFKA_TOPIC = os.environ.get("KAFKA_TOPIC")
-
-# === Spark y procesamiento ===
-from pyspark.sql import SparkSession
-from pyspark.sql.functions import from_json, col
-from pyspark.sql.types import StructType, StringType
-from config.path import ML_TRAINING_DATA_DIR, CHECKPOINT_ML_DIR
 
 spark = SparkSession.builder \
     .appName("KafkaSparkETL_ML") \
@@ -55,9 +53,10 @@ df_raw = spark.readStream \
 
 df_parsed = df_raw.selectExpr("CAST(value AS STRING)") \
     .select(from_json(col("value"), schema).alias("data")) \
-    .select("data.*")
+    .select("data.*") \
+    .withColumn("event_time", to_timestamp(col("timestamp"), "yyyy-MM-dd HH:mm:ss"))
 
-df_ml = df_parsed.select("open", "high", "low", "close", "volume")
+df_ml = df_parsed.select("event_time", "open", "high", "low", "close", "volume")
 
 query_ml = df_ml.writeStream \
     .outputMode("append") \
@@ -67,7 +66,3 @@ query_ml = df_ml.writeStream \
     .start()
 
 query_ml.awaitTermination()
-
-
-
-

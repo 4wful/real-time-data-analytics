@@ -66,5 +66,3 @@ if csvs_procesados:
     print(f"✅ PDF total procesado guardado como: {ruta_final}")
 else:
     print("⚠️ No se generó archivo final: ningún PDF fue procesado exitosamente.")
-
-

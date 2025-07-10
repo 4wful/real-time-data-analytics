@@ -11,9 +11,8 @@ ROOT_DIR = os.path.abspath(os.path.join(CURRENT_DIR, '..'))
 if ROOT_DIR not in sys.path:
     sys.path.append(ROOT_DIR)
 
-# === Cargar variables del .env manualmente desde la raíz ===
+# === Cargar .env manualmente ===
 env_path = os.path.join(ROOT_DIR, '.env')
-
 if os.path.exists(env_path):
     with open(env_path) as f:
         for line in f:
@@ -76,7 +75,7 @@ def main():
             "volume": values['5. volume']
         }
         producer.send(TOPIC, value=message)
-        print(f"📤 Enviado mensaje para {timestamp}")
+        print(f"📤 Enviado mensaje para {timestamp} => {message}")
 
     producer.flush()
     producer.close()
@@ -84,3 +83,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    

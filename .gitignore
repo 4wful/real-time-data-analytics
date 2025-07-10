@@ -1,23 +1,46 @@
-# Entorno virtual
+# === Entorno virtual ===
 venv/
+.venv/
 
-# Variables sensibles
+# === Variables sensibles ===
 .env
 
-# Archivos temporales de Python
+# === Archivos temporales de Python ===
 *.pyc
 __pycache__/
 
-# Ignorar TODO en output
+# === Archivos generados por Jupyter o IPython ===
+.ipynb_checkpoints/
+
+# === Archivos temporales del sistema ===
+.DS_Store
+Thumbs.db
+
+# === Salidas del proyecto (datos y visualizaciones) ===
 output/**
 
-# permitir las carpetas vacías con .gitkeep
+# Permitir carpetas vacías con .gitkeep
 !output/**/
 !output/**/.gitkeep
 
-# Archivos comprimidos
-*.zip
+# === Modelos entrenados y artefactos ML ===
+*.pkl
+*.joblib
 
-# Archivos temporales del sistema
-.DS_Store
-Thumbs.db
+# === Reportes e imágenes ===
+*.png
+*.jpg
+
+# === Logs, backups, resultados intermedios ===
+*.log
+*.bak
+*.tmp
+*.csv~
+
+# === Power BI / Archivos grandes locales ===
+*.pbix
+
+# === Archivos comprimidos ===
+*.zip
+*.rar
+*.7z

@@ -25,8 +25,8 @@ ML_ZIP_FINAL_PATH = ML_TRAINING_DATA_DIR / 'ml_training_data.zip'
 
 # === Rutas para scripts de entrenamiento y predicción ===
 ML_CSV_PATH = ML_TRAINING_DATA_DIR / 'ml_training_data.csv'
-BEST_MODEL_PATH = BASE_DIR / 'machine_learning' / 'modelo_final.pkl'
-BEST_FEATURES_PATH = BASE_DIR / 'machine_learning' / 'mejores_features.txt'
+BEST_MODEL_PATH = PREDICTIONS_DIR / 'modelo_final.pkl'
+BEST_FEATURES_PATH = PREDICTIONS_DIR / 'mejores_features.txt'
 PRED_CSV_PATH = PREDICTIONS_DIR / 'predicciones_vs_reales.csv'
 
 # === Rutas para archivos procesados estáticos ===
@@ -41,7 +41,6 @@ KAFKA_DIR = BASE_DIR / 'kafka'
 
 # === Archivos individuales ===
 DOCKER_COMPOSE_FILE = KAFKA_DIR / 'docker-compose.yml'
-POWER_BI_FILE = BASE_DIR / 'power_bi' / 'nvidia_dashboard.pbix'
 
 # === Notas de uso ===
 # Puedes importar cualquier ruta en tus scripts:
@@ -57,5 +56,4 @@ POWER_BI_FILE = BASE_DIR / 'power_bi' / 'nvidia_dashboard.pbix'
 
     
 # from config.path import RAW_CSV_DIR, ML_CSV_FINAL_PATH, CSV_PROCESADO_PATH, etc.
-
 
